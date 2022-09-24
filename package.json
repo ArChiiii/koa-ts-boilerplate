@@ -1,0 +1,44 @@
+{
+  "name": "koa-ts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node dist/index.js",
+    "server": "ts-node-dev --transpile-only src/index.ts",
+    "build": "tsc -p .",
+    "test": "mocha -r ts-node/register ./src/tests/**/*.test.ts",
+    "test:watch": "jest --watchAll",
+    "db:makemigration": "knex migrate:make --knexfile ./src/knexfile.ts",
+    "db:makeseed": "knex seed:make --knexfile ./src/knexfile.ts",
+    "db:migrate": "knex migrate:latest --knexfile ./src/knexfile.ts",
+    "db:rollback": "knex migrate:rollback --knexfile ./src/knexfile.ts",
+    "db:seed": "knex seed:run --knexfile ./src/knexfile.ts",
+    "db:reset:hard": "yarn db:rollback 9999 && yarn db:migrate && yarn db:seed"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.2",
+    "koa": "^2.7.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-json": "^2.0.2",
+    "koa-logger": "^3.2.0",
+    "koa-router": "^7.4.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.3",
+    "@types/koa": "^2.13.5",
+    "@types/koa-bodyparser": "^4.3.8",
+    "@types/koa-json": "^2.0.20",
+    "@types/koa-logger": "^3.1.2",
+    "@types/koa-router": "^7.4.4",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "^18.7.18",
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
+    "knex": "^2.3.0",
+    "mocha": "^10.0.0",
+    "pg": "^8.8.0",
+    "ts-node": "^10.9.1",
+    "typings": "^2.1.1"
+  }
+}
